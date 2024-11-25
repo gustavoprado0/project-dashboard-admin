@@ -3,7 +3,7 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { Home, Package, PanelBottom, Settings2, ShoppingBag, Users } from "lucide-react";
+import { Home, LogOut, Package, PanelBottom, Settings2, ShoppingBag, Users } from "lucide-react";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { Tooltip, TooltipProvider } from "../ui/tooltip";
 import { TooltipContent, TooltipTrigger } from "@radix-ui/react-tooltip";
@@ -12,7 +12,7 @@ export function Sidebar() {
   return (
     <div className="flex w-full flex-col bg-muted/40">
 
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 border-r bg-background sm:flex">
+    <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 border-r bg-background sm:flex flex-col">
         <nav className="flex flex-col items-center gap-4 px-2 py-5">
             <TooltipProvider>
               <Link 
@@ -25,7 +25,7 @@ export function Sidebar() {
               </Link>
               
               <Tooltip>
-                <TooltipTrigger>
+                <TooltipTrigger asChild>
                 <Link 
                   href="#"
                   className="flex h-9 w-9 shrink-0
@@ -39,10 +39,109 @@ export function Sidebar() {
                  side="right"
                  className="text-white font-semibold text-xs border border-gray-200
                  px-2 rounded-full bg-zinc-600">
+                  Início
+                </TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                <Link 
+                  href="#"
+                  className="flex h-9 w-9 shrink-0
+                  text-zinc-500 hover:text-zinc-900 items-center justify-center rounded-lg"
+                >
+                  <ShoppingBag className="h-5 w-5" />
+                  <span className="sr-only">Pedidos</span>
+                </Link>
+                </TooltipTrigger>
+                <TooltipContent
+                 side="right"
+                 className="text-white font-semibold text-xs border border-gray-200
+                 px-2 rounded-full bg-zinc-600">
                   Pedidos
                 </TooltipContent>
               </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                <Link 
+                  href="#"
+                  className="flex h-9 w-9 shrink-0
+                  text-zinc-500 hover:text-zinc-900 items-center justify-center rounded-lg"
+                >
+                  <Package className="h-5 w-5" />
+                  <span className="sr-only">Produtos</span>
+                </Link>
+                </TooltipTrigger>
+                <TooltipContent
+                 side="right"
+                 className="text-white font-semibold text-xs border border-gray-200
+                 px-2 rounded-full bg-zinc-600">
+                  Produtos
+                </TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                <Link 
+                  href="#"
+                  className="flex h-9 w-9 shrink-0
+                  text-zinc-500 hover:text-zinc-900 items-center justify-center rounded-lg"
+                >
+                  <Users className="h-5 w-5" />
+                  <span className="sr-only">Clientes</span>
+                </Link>
+                </TooltipTrigger>
+                <TooltipContent
+                 side="right"
+                 className="text-white font-semibold text-xs border border-gray-200
+                 px-2 rounded-full bg-zinc-600">
+                  Clientes
+                </TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                <Link 
+                  href="#"
+                  className="flex h-9 w-9 shrink-0
+                  text-zinc-500 hover:text-zinc-900 items-center justify-center rounded-lg"
+                >
+                  <Settings2 className="h-5 w-5" />
+                  <span className="sr-only">Configuração</span>
+                </Link>
+                </TooltipTrigger>
+                <TooltipContent
+                 side="right"
+                 className="text-white font-semibold text-xs border border-gray-200
+                 px-2 rounded-full bg-zinc-600">
+                  Configuração
+                </TooltipContent>
+              </Tooltip>
             </TooltipProvider>
+        </nav>
+
+        <nav className="mt-auto flex flex-col items-center gap-4 px-2 py-5">
+         <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link 
+                href="#"
+                className="flex h-9 w-9 shrink-0
+                text-zinc-500 hover:text-zinc-900 items-center justify-center rounded-lg"
+                >
+                 <LogOut className="h-5 w-5 text-red-500" />
+                 <span className="sr-only">Sair</span>
+                </Link>
+                </TooltipTrigger>
+                <TooltipContent
+                 side="right"
+                 className="text-white font-semibold text-xs border border-gray-200
+                 px-2 rounded-full bg-zinc-600">
+                  Sair
+                </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </nav>
     </aside>
 
