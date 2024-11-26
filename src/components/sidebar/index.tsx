@@ -10,209 +10,97 @@ import { TooltipContent, TooltipTrigger } from "@radix-ui/react-tooltip";
 
 export function Sidebar() {
   return (
-    <div className="flex w-full flex-col bg-muted/40">
-
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 border-r bg-background sm:flex flex-col">
+    <div className="flex w-full flex-col bg-white">
+      <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 border-r bg-muted/40 sm:flex flex-col">
         <nav className="flex flex-col items-center gap-4 px-2 py-5">
-            <TooltipProvider>
-              <Link 
+          <TooltipProvider>
+            <Link
               href="#"
-              className="flex h-9 w-9 shrink-0 items-center justify-center bg-black
-              text-white rounded-full"
-              >
-                <Package className="h-4 w-4" />
-                <span className="sr-only">Dashboard Avatar</span>
-              </Link>
-              
-              <Tooltip>
-                <TooltipTrigger asChild>
-                <Link 
-                  href="#"
-                  className="flex h-9 w-9 shrink-0
-                  text-zinc-500 hover:text-zinc-900 items-center justify-center rounded-lg"
-                >
-                  <Home className="h-5 w-5" />
-                  <span className="sr-only">Início</span>
-                </Link>
-                </TooltipTrigger>
-                <TooltipContent
-                 side="right"
-                 className="text-white font-semibold text-xs border border-gray-200
-                 px-2 rounded-full bg-zinc-600">
-                  Início
-                </TooltipContent>
-              </Tooltip>
+              className="flex h-9 w-9 items-center justify-center bg-black text-white rounded-full"
+            >
+              <Package className="h-4 w-4" />
+              <span className="sr-only">Dashboard Avatar</span>
+            </Link>
 
-              <Tooltip>
+            {[
+              { icon: <Home className="h-5 w-5" />, label: "Início" },
+              { icon: <ShoppingBag className="h-5 w-5" />, label: "Pedidos" },
+              { icon: <Package className="h-5 w-5" />, label: "Produtos" },
+              { icon: <Users className="h-5 w-5" />, label: "Clientes" },
+              { icon: <Settings2 className="h-5 w-5" />, label: "Configuração" },
+            ].map(({ icon, label }, idx) => (
+              <Tooltip key={idx}>
                 <TooltipTrigger asChild>
-                <Link 
-                  href="#"
-                  className="flex h-9 w-9 shrink-0
-                  text-zinc-500 hover:text-zinc-900 items-center justify-center rounded-lg"
-                >
-                  <ShoppingBag className="h-5 w-5" />
-                  <span className="sr-only">Pedidos</span>
-                </Link>
+                  <Link
+                    href="#"
+                    className="flex h-9 w-9 items-center justify-center text-zinc-500 hover:text-zinc-900 rounded-lg"
+                  >
+                    {icon}
+                    <span className="sr-only">{label}</span>
+                  </Link>
                 </TooltipTrigger>
                 <TooltipContent
-                 side="right"
-                 className="text-white font-semibold text-xs border border-gray-200
-                 px-2 rounded-full bg-zinc-600">
-                  Pedidos
-                </TooltipContent>
-              </Tooltip>
-
-              <Tooltip>
-                <TooltipTrigger asChild>
-                <Link 
-                  href="#"
-                  className="flex h-9 w-9 shrink-0
-                  text-zinc-500 hover:text-zinc-900 items-center justify-center rounded-lg"
+                  side="right"
+                  className="text-white font-semibold text-xs border border-gray-200 px-2 rounded-full bg-zinc-600"
                 >
-                  <Package className="h-5 w-5" />
-                  <span className="sr-only">Produtos</span>
-                </Link>
-                </TooltipTrigger>
-                <TooltipContent
-                 side="right"
-                 className="text-white font-semibold text-xs border border-gray-200
-                 px-2 rounded-full bg-zinc-600">
-                  Produtos
+                  {label}
                 </TooltipContent>
               </Tooltip>
-
-              <Tooltip>
-                <TooltipTrigger asChild>
-                <Link 
-                  href="#"
-                  className="flex h-9 w-9 shrink-0
-                  text-zinc-500 hover:text-zinc-900 items-center justify-center rounded-lg"
-                >
-                  <Users className="h-5 w-5" />
-                  <span className="sr-only">Clientes</span>
-                </Link>
-                </TooltipTrigger>
-                <TooltipContent
-                 side="right"
-                 className="text-white font-semibold text-xs border border-gray-200
-                 px-2 rounded-full bg-zinc-600">
-                  Clientes
-                </TooltipContent>
-              </Tooltip>
-
-              <Tooltip>
-                <TooltipTrigger asChild>
-                <Link 
-                  href="#"
-                  className="flex h-9 w-9 shrink-0
-                  text-zinc-500 hover:text-zinc-900 items-center justify-center rounded-lg"
-                >
-                  <Settings2 className="h-5 w-5" />
-                  <span className="sr-only">Configuração</span>
-                </Link>
-                </TooltipTrigger>
-                <TooltipContent
-                 side="right"
-                 className="text-white font-semibold text-xs border border-gray-200
-                 px-2 rounded-full bg-zinc-600">
-                  Configuração
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            ))}
+          </TooltipProvider>
         </nav>
 
+        {/* Logout */}
         <nav className="mt-auto flex flex-col items-center gap-4 px-2 py-5">
-         <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link 
-                href="#"
-                className="flex h-9 w-9 shrink-0
-                text-zinc-500 hover:text-zinc-900 items-center justify-center rounded-lg"
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link
+                  href="#"
+                  className="flex h-9 w-9 items-center justify-center text-zinc-500 hover:text-zinc-900 rounded-lg"
                 >
-                 <LogOut className="h-5 w-5 text-red-500" />
-                 <span className="sr-only">Sair</span>
+                  <LogOut className="h-5 w-5 text-red-500" />
+                  <span className="sr-only">Sair</span>
                 </Link>
-                </TooltipTrigger>
-                <TooltipContent
-                 side="right"
-                 className="text-white font-semibold text-xs border border-gray-200
-                 px-2 rounded-full bg-zinc-600">
-                  Sair
-                </TooltipContent>
+              </TooltipTrigger>
+              <TooltipContent
+                side="right"
+                className="text-white font-semibold text-xs border border-gray-200 px-2 rounded-full bg-zinc-600"
+              >
+                Sair
+              </TooltipContent>
             </Tooltip>
           </TooltipProvider>
         </nav>
-    </aside>
+      </aside>
 
-      <div className="sm:hidden flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-        <header className="sticky top-0 z-30 flex 
-        h-14 items-center px-4 border-b bg-background
-        gap-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
+      <div className="sm:hidden flex flex-col flex-1">
+        <header className="sticky top-0 z-30 flex h-14 items-center px-4 border-b bg-background gap-4">
           <Sheet>
             <SheetTrigger asChild>
-              <Button size="icon" variant="outline" className="sm:hidden">
+              <Button size="icon" variant="outline">
                 <PanelBottom className="w-5 h-5" />
                 <DialogTitle className="sr-only">Abrir/Fechar menu</DialogTitle>
               </Button>
             </SheetTrigger>
-
-            <SheetContent side="left" className="sm:max-w-x">
+            <SheetContent side="left">
               <nav className="grid gap-6 text-lg font-medium">
-                <Link 
-                href="#"
-                className="flex h-10 w-10 bg-black
-                 rounded-full text-lg items-center justify-center text-white md:text-base
-                 gap-2"
-                >
-                  <Package className="h-5 w-5 transition-all" />
-                  <span className="sr-only">Logo do projeto</span>
-                </Link>
-
-                <Link 
-                href="#"
-                className="flex items-center gap-4 px-2.5
-                 text-zinc-500 hover:text-zinc-900"
-                >
-                  <Home className="h-5 w-5 transition-all" />
-                  Início
-                </Link>
-
-                <Link 
-                href="#"
-                className="flex items-center gap-4 px-2.5
-                 text-zinc-500 hover:text-zinc-900"
-                >
-                  <ShoppingBag className="h-5 w-5 transition-all" />
-                  Pedidos
-                </Link>
-
-                <Link 
-                href="#"
-                className="flex items-center gap-4 px-2.5
-                 text-zinc-500 hover:text-zinc-900"
-                >
-                  <Package className="h-5 w-5 transition-all" />
-                  Produtos
-                </Link>
-
-                <Link 
-                href="#"
-                className="flex items-center gap-4 px-2.5
-                 text-zinc-500 hover:text-zinc-900"
-                >
-                  <Users className="h-5 w-5 transition-all" />
-                  Clientes
-                </Link>
-
-                <Link 
-                href="#"
-                className="flex items-center gap-4 px-2.5
-                 text-zinc-500 hover:text-zinc-900"
-                >
-                  <Settings2 className="h-5 w-5 transition-all" />
-                  Configurações
-                </Link>
+                {[
+                  { icon: <Home className="h-5 w-5" />, label: "Início" },
+                  { icon: <ShoppingBag className="h-5 w-5" />, label: "Pedidos" },
+                  { icon: <Package className="h-5 w-5" />, label: "Produtos" },
+                  { icon: <Users className="h-5 w-5" />, label: "Clientes" },
+                  { icon: <Settings2 className="h-5 w-5" />, label: "Configurações" },
+                ].map(({ icon, label }, idx) => (
+                  <Link
+                    key={idx}
+                    href="#"
+                    className="flex items-center gap-4 px-2.5 text-zinc-500 hover:text-zinc-900"
+                  >
+                    {icon}
+                    {label}
+                  </Link>
+                ))}
               </nav>
             </SheetContent>
           </Sheet>
